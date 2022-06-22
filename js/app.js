@@ -128,6 +128,7 @@ function nav(path) {
     var model = window.MODEL;
     var html = "";
     var cur = window.current_drive_order || 0;
+    var drive_name = window.drive_names[cur];
     html += `<nav class="navbar navbar-expand-lg${UI.fixed_header ?' fixed-top': ''} ${UI.header_style_class}">
     <div class="container-fluid">
   <a class="navbar-brand" href="/">${drive_name}`);</a>
