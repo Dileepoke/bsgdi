@@ -150,7 +150,7 @@ function nav(path) {
     });
     html += `</div></li>`;
 
-    html += `<li class="nav-item dropdown"><a class="nav-link =" href="#"  aria-haspopup="true" aria-expanded="false"></a>`;
+    html += `<li class="">`;
 
     if (!model.is_search_page) {
         var arr = path.trim('/').split('/');
