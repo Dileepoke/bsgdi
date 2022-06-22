@@ -151,8 +151,6 @@ function nav(path) {
     html += `</div></li>`;
 
   
-  
-    }
 
     html += `</div></li><li class="nav-item">
     <a class="nav-link" href="${UI.contact_link}" target="_blank">${UI.nav_link_4}</a>
