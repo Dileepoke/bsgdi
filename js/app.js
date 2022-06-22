@@ -131,7 +131,8 @@ function nav(path) {
     var drive_name = window.drive_names[cur];
     html += `<nav class="navbar navbar-expand-lg${UI.fixed_header ?' fixed-top': ''} ${UI.header_style_class}">
     <div class="container-fluid">
-  <a class="navbar-brand" href="/">${drive_name}</a>
+  <a class="navbar-brand" href="/">${drive_name}`);</a>
+  <a class="navbar-brand" href="/">${drive_name};</a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -142,15 +143,13 @@ function nav(path) {
       </li>`;
     var names = window.drive_names;
     var drive_name = window.drive_names[cur];
-
     // Dropdown to select different drive roots.
     html += `<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${drive_name}</a><div class="dropdown-menu" aria-labelledby="navbarDropdown">`;
     names.forEach((name, idx) => {
         html += `<a class="dropdown-item"  href="/${idx}:/">${name}</a>`;
     });
     html += `</div></li>`;
-
-    html += `<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a><div class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item"  href="/"></a>`;
+    html += `<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a><div class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item"  href="/">></a>`;
     if (!model.is_search_page) {
         var arr = path.trim('/').split('/');
         var p = '/';
@@ -177,11 +176,9 @@ function nav(path) {
             }
         }
     }
-
     html += `</div></li><li class="nav-item">
     <a class="nav-link" href="${UI.contact_link}" target="_blank">${UI.nav_link_4}</a>
   </li>`;
-
     var search_text = model.is_search_page ? (model.q || '') : '';
     const isMobile = Os.isMobile;
     var search_bar = `
@@ -194,7 +191,6 @@ function nav(path) {
 </div>
 </nav>
 `;
-
     // Personal or team
     if (model.root_type < 2) {
         // Show search box
