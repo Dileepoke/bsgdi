@@ -27,7 +27,7 @@ function init() {
   </div>
 </div>
 <br>
-  <footer class="footer mt-auto py-3 text-muted ${UI.footer_style_class}" style="${UI.fixed_footer ?'position: fixed; ': ''}left: 0; bottom: 0; width: 100%; color: white; z-index: 9999;"> <div class="container mt-4" style="width: auto; padding: 0 10px;"><p class="float-end"> <a href="#">Back to top</a> </p><p class='text-center'><img  src='https://img.shields.io/badge/%20Discord-TheKVT%236900-blue?style=flat-square&labelColor=inactive&logo=discord'></img></p></div> </footer>  `;
+  <footer class="footer> <div class="container mt-4" style="width: auto; padding: 0 10px;"><p class="float-end"> <a href="#">Back to top</a> </p><p class='text-center'><img  src='https://img.shields.io/badge/%20Discord-TheKVT%236900-blue?style=flat-square&labelColor=inactive&logo=discord'></img></p></div> </footer>  `;
     $('body').html(html);
 }
 
