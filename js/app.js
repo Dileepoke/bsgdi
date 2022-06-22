@@ -150,6 +150,33 @@ function nav(path) {
     });
     html += `</div></li>`;
 
+    html += `<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a><div class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item"  href="/"></a>`;
+    if (!model.is_search_page) {
+        var arr = path.trim('/').split('/');
+        var p = '/';
+        if (arr.length > 1) {
+            arr.shift();
+            for (var i in arr) {
+                var an = arr[i];
+                n1 = decodeURIComponent(an);
+                n2 = n1.replace(/\?.+/g, "$'")
+                if (n2.length > 15) {
+                    n = n2.slice(0, 5) + '...';
+                } else {
+                    n = n2.slice(0, 15);
+                }
+                p += an + '/';
+                var ext = p.split('.').pop().toLowerCase();
+                if ("|mp3/|aac/|wma/|wpl/|aif/|cda/|mpa/|wav/|ogg/|mp4/|mkv/|mov/|flac/|m4a/|pdf/|jpg/|png/|jpeg/|gif/|md/|zip/|rar/|exe/|tar/|txt/|html/|7z/|arj/|deb/|pkg/|rpm/|tar.gz/|z/|bin/|dmg/|iso/|toast/|vcd/|csv/|dat/|db/|dbf/|log/|mdv/|sav/|sql/|xml/|email/|vcf/|apk/|bat/|bin/|cgi/|jar/|py/|msi/|wsf/|fnt/|fon/|otf/|ttf/|ai/|bmp/|ico/|ps/|psd/|svg/|tif/|tiff/|asp/|aspx/|cer/|cfm/|cgi/|pl/|css/|htm/|html/|js/|jsp/|part/|php/|rss/|xhtml/|key/|odp/|pps/|ppt/|pptx/|pem/|ppk/|java/|sh/|vb/|ods/|xls/|xlsm/|xlsx/|3gp/|flv/|m4v/|mpg/|mpeg/|avi/|doc/|docx/|rtf/|".indexOf(`|${ext}|`) >= 0) {
+                    p = p.slice(0, -1);
+                }
+                if (n === '') {
+                    break;
+                }
+                html += `<a class="dropdown-item"  href="${p}">> ${n}</a>`;
+            }
+        }
+    }
 
     html += `</div></li><li class="nav-item">
     <a class="nav-link" href="${UI.contact_link}" target="_blank">${UI.nav_link_4}</a>
