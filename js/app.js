@@ -128,7 +128,7 @@ function nav(path) {
     var html = "";
     var cur = window.current_drive_order || 0;
     var drive_name = window.drive_names[cur];
-    html += `<nav class="navbar navbar-expand-lg${UI.fixed_header ?' fixed-top': ''} ${UI.header_style_class}">
+    html += `<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
     <div class="container-fluid">
   <a class="navbar-brand" href="/">${drive_name}</a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -162,7 +162,9 @@ function nav(path) {
 </ul>
 <form class="d-flex" method="get" action="/${cur}:search">
 <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search" value="${search_text}" required>
-<button class="btn ${UI.search_button_class}" onclick="if($('#search_bar_form>input').val()) $('#search_bar_form').submit();" type="submit">Search</button>
+<button class="btn btn-info" onclick="if($('#search_bar_form>input').val()) $('#search_bar_form').submit();" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg>  Search</button>
 </form>
 </div>
 </div>
@@ -239,6 +241,11 @@ function nav(path) {
                  $('#update').html(`<div class='alert alert-danger' role='alert'> Unable to get data from the server, Something went wrong.</div></div></div>`);
                  $('#list').html(`<div class='alert alert-danger' role='alert'> We were unable to get data from the server.</div></div></div>`);
                  $('#spinner').remove();
+                 $( window ).load(function() {
+    if (window.location.href.indexOf('reload')==-1) {
+         window.location.replace(window.location.href);
+    }
+});
              });
          });
      });
@@ -298,6 +305,11 @@ function nav(path) {
                  $('#update').html(`<div class='alert alert-danger' role='alert'> Unable to get data from the server, Something went wrong. 3 Failures</div></div></div>`);
                  $('#list').html(`<div class='alert alert-danger' role='alert'> We were unable to get data from the server.</div></div></div>`);
                  $('#spinner').remove();
+                        $( window ).load(function() {
+    if (window.location.href.indexOf('reload')==-1) {
+         window.location.replace(window.location.href);
+    }
+});
              });
          });
      });
@@ -305,10 +317,10 @@ function nav(path) {
 
 // Render file list
 function list(path) {
-    var content = `<div class="container">${UI.fixed_header ?'<br>': ''}
+    var content = `<div class="container"><br>
   <div id="update"></div>
     <div id="head_md" style="display:none; padding: 20px 20px;"></div>
-    <div class="${UI.path_nav_alert_class} d-flex align-items-center" role="alert" style="margin-bottom: 0; padding-bottom: 0rem;">
+    <div class="alert alert-primary d-flex align-items-center" role="alert" style="margin-bottom: 0; padding-bottom: 0rem;">
   <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     <ol class="breadcrumb" id="folderne"><li class="breadcrumb-item"><a href="/">Home</a></li>`;
     var navlink = '';
@@ -342,7 +354,7 @@ function list(path) {
   </div>
     <div id="list" class="list-group text-break">
     </div>
-    <div class="${UI.file_count_alert_class} text-center d-none" role="alert" id="count">Total <span class="number text-center"></span> items</div>
+    <div class="alert alert-secondary text-center d-none" role="alert" id="count">Total <span class="number text-center"></span> items</div>
     <div id="readme_md" style="display:none; padding: 20px 20px;"></div>
     </div>
     `;
