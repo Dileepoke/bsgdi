@@ -1083,16 +1083,16 @@ function file_image(path) {
             let prev_child = (cur - 1 > -1) ? target_children[cur - 1] : null;
             let next_child = (cur + 1 < len) ? target_children[cur + 1] : null;
             targetText = `
-                <div class="container">
+                
                 <div class="row mb-1">
                     <div class="col">
-                        ${prev_child ? `<button id="leftBtn" data-filepath="${prev_child}" class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple">Previous</button>` : `<button class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple" disabled>Previous</button>`}
+                        ${prev_child ? `<button id="leftBtn" data-filepath="${prev_child}" class="btn btn-primary">Previous</button>` : ''}
                     </div>
                     <div class="col">
-                        ${next_child ? `<button id="rightBtn"  data-filepath="${next_child}" class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple">Next</button>` : `<button class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple" disabled>Next</button>`}
+                        ${next_child ? `<button id="rightBtn"  data-filepath="${next_child}" class="btn btn-primary">Next</button>` : ''}
                     </div>
                 </div>
-              </div>
+              
             `;
     }
     $.post("",
