@@ -1140,19 +1140,18 @@ function file_image(path) {
 </div>
 </div>`
             }
-            // my code
-            $('#content').html(content);
-        });
-    $('#leftBtn, #rightBtn').click((e) => {
-        let target = $(e.target);
-        if (['I', 'SPAN'].includes(e.target.nodeName)) {
-            target = $(e.target).parent();
-        }
-        const filepath = target.attr('data-filepath');
-        const direction = target.attr('data-direction');
-        //console.log(`${direction}Turn page ${filepath}`);
-        file(filepath)
-    });
+ //my code
+  $('#content').html(content);
+  $('#leftBtn, #rightBtn').click((e) => {
+    let target = $(e.target);
+    if (['I', 'SPAN'].includes(e.target.nodeName)) {
+      target = $(e.target).parent();
+    }
+    const filepath = target.attr('data-filepath');
+    const direction = target.attr('data-direction');
+    //console.log (`$ {direction} turn page $ {filepath}`);
+    file(filepath)
+  });
 }
 
 
