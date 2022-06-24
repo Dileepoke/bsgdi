@@ -1082,18 +1082,24 @@ function file_image(path) {
             // console.log(`cur = ${cur}`)
             let prev_child = (cur - 1 > -1) ? target_children[cur - 1] : null;
             let next_child = (cur + 1 < len) ? target_children[cur + 1] : null;
+            if (prev_child == null) {
+                var prevchild = false;
+            } else if (prev_child.endsWith(".jpg") == true || prev_child.endsWith(".png") || prev_child.endsWith(".jpeg") || prev_child.endsWith(".gif")) {
+                var prevchild = true;
+            }
+            if (next_child == null) {
+                var nextchild = false;
+            } else if (next_child.endsWith(".jpg") == true || next_child.endsWith(".png") || next_child.endsWith(".jpeg") || next_child.endsWith(".gif")) {
+                var nextchild = true;
+            }
             targetText = `
-                
-                <div class="row mb-1">
-                    <div class="col">
-                        ${prev_child ? `<button id="leftBtn" data-filepath="${prev_child}" class="btn btn-primary">Previous</button>` : ''}
-                    </div>
-                    <div class="col">
-                        ${next_child ? `<button id="rightBtn"  data-filepath="${next_child}" class="btn btn-primary">Next</button>` : ''}
-                    </div>
-                </div>
-              
-            `;
+
+                              ${prevchild ? `<a class="btn btn-primary" href="${prev_child}?a=view" role="button">Previous</a>` : ``}
+
+                              ${nextchild ? `<a class="btn btn-primary" href="${next_child}?a=view" role="button">Next</a>` : ``}
+
+                  `;
+        }
     }
     $.post("",
         function(data) {
@@ -1119,6 +1125,14 @@ function file_image(path) {
   ${UI.display_drive_link ? '<a type="button" class="btn btn-info" href="https://drive.google.com/file/d/'+ obj.id +'/view" id ="file_drive_link" target="_blank">GD Link</a>': ''}
   <div class="btn-group text-center">
       <a href="${url}" type="button" class="btn btn-primary">Download</a>
+      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only"></span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="intent:${url}#Intent;component=idm.internet.download.manager/idm.internet.download.manager.Downloader;S.title=${decodename};end">1DM (Free)</a>
+        <a class="dropdown-item" href="intent:${url}#Intent;component=idm.internet.download.manager.adm.lite/idm.internet.download.manager.Downloader;S.title=${decodename};end">1DM (Lite)</a>
+        <a class="dropdown-item" href="intent:${url}#Intent;component=idm.internet.download.manager.plus/idm.internet.download.manager.Downloader;S.title=${decodename};end">1DM+ (Plus)</a>
+      </div>
   </div>
   <button onclick="copyFunction()" onmouseout="outFunc()" class="btn btn-success"> <span class="tooltiptext" id="myTooltip">Copy</span> </button></div><br>
   </div>
@@ -1140,19 +1154,22 @@ function file_image(path) {
 </div>
 </div>`
             }
- //my code
-  $('#content').html(content);
-  $('#leftBtn, #rightBtn').click((e) => {
-    let target = $(e.target);
-    if (['I', 'SPAN'].includes(e.target.nodeName)) {
-      target = $(e.target).parent();
-    }
-    const filepath = target.attr('data-filepath');
-    const direction = target.attr('data-direction');
-    //console.log (`$ {direction} turn page $ {filepath}`);
-    file(filepath)
-  });
+            // my code
+            $('#content').html(content);
+        });
+    $('#leftBtn, #rightBtn').click((e) => {
+        let target = $(e.target);
+        if (['I', 'SPAN'].includes(e.target.nodeName)) {
+            target = $(e.target).parent();
+        }
+        const filepath = target.attr('data-filepath');
+        const direction = target.attr('data-direction');
+        //console.log(`${direction}Turn page ${filepath}`);
+        file(filepath)
+    });
 }
+
+
 
 
 // Time conversion
