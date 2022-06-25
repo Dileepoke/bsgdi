@@ -1050,6 +1050,11 @@ function file_audio(path) {
     var decodename = unescape(name);
     var path = path;
     var url = UI.second_domain_for_dl ? UI.downloaddomain + path : window.location.origin + path;
+    var x,v;
+    x = url.split("/");
+    x.pop();
+    x.push("cover.jpg");
+    v = x.join('/')
     $.post("",
         function(data) {
             try {
@@ -1060,7 +1065,7 @@ function file_audio(path) {
   <div class="card" style="background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);">
   <div class="card-body text-center">
   <div class="${UI.file_view_alert_class}" id="file_details" role="alert">${obj.name}<br>${size}</div>
-  <br><img draggable="false" src="${UI.audioposter}" width="100%" /><br>
+  <br><img draggable="false" src="${v}" width="100%" /><br>
   <audio id="vplayer" width="100%" playsinline controls>
     <source src="${url}" type="audio/ogg">
     <source src="${url}" type="audio/mpeg">
