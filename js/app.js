@@ -902,9 +902,9 @@ function file_code(path) {
             try {
                 var obj = jQuery.parseJSON(gdidecode(read(data)));
                 var size = formatFileSize(obj.size);
-                var content = `
+                var content = `<head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism-twilight.css" integrity="sha256-Rl83wx+fN2p2ioYpdvpWxuhAbxj+/7IwaZrKQBu/KQE=" crossorigin="anonymous">
-<title>${obj.name}</title>
+<title>${obj.name}</title></head>
 <div class="container"><br>
 <div class="card text-center">
 <div class="card-body text-center">
