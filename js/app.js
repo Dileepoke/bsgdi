@@ -848,7 +848,7 @@ function file_others(path) {
                 } else {
                     var content = `
 <div class="container"><br>
-<h5 class='text-center fw-bold mt-6'> Downloading the File!!!</h5>
+<h2 class='text-center fw-bold mt-5'> Downloading the File!!!!</h6>
 <script>
 var host = window.location.href.split('?')[0];
 location.replace(host)
@@ -904,6 +904,7 @@ function file_code(path) {
                 var size = formatFileSize(obj.size);
                 var content = `
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism-twilight.css" integrity="sha256-Rl83wx+fN2p2ioYpdvpWxuhAbxj+/7IwaZrKQBu/KQE=" crossorigin="anonymous">
+<title>${obj.name}</title>
 <div class="container"><br>
 <div class="card text-center">
 <div class="card-body text-center">
@@ -974,6 +975,7 @@ function file_video(path) {
                     var poster = UI.poster;
                 }
                 var content = `
+   <title>${obj.name}</title>             
   <div class="container text-center"><br>
   <div class="card text-center">
   <div class="text-center">
