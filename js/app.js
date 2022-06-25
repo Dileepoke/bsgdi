@@ -848,6 +848,7 @@ function file_others(path) {
                 } else {
                     var content = `
 <div class="container"><br>
+<h5 class='text-centre'> Downloading the File!!!</h5>
 <script>
 var host = window.location.href.split('?')[0];
 location.replace(host)
