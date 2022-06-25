@@ -848,33 +848,12 @@ function file_others(path) {
                 } else {
                     var content = `
 <div class="container"><br>
-<div class="card text-center">
-<div class="card-body text-center">
-  <div class="${UI.file_view_alert_class}" id="file_details" role="alert">${obj.name}<br>${size}</div>
-</div>
-<div class="card-body">
-<div class="input-group mb-4">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="">Full URL</span>
-  </div>
-  <input type="text" class="form-control" id="dlurl" value="${url}">
-</div>
-  <div class="card-text text-center">
-  ${UI.display_drive_link ? '<a type="button" class="btn btn-info" href="https://drive.google.com/file/d/'+ obj.id +'/view" id ="file_drive_link" target="_blank">GD Link</a>': ''}
-  <div class="btn-group text-center">
-      <a href="${url}" type="button" class="btn btn-primary">Download</a>
-      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only"></span>
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="intent:${url}#Intent;component=idm.internet.download.manager/idm.internet.download.manager.Downloader;S.title=${decodename};end">1DM (Free)</a>
-        <a class="dropdown-item" href="intent:${url}#Intent;component=idm.internet.download.manager.adm.lite/idm.internet.download.manager.Downloader;S.title=${decodename};end">1DM (Lite)</a>
-        <a class="dropdown-item" href="intent:${url}#Intent;component=idm.internet.download.manager.plus/idm.internet.download.manager.Downloader;S.title=${decodename};end">1DM+ (Plus)</a>
-      </div>
-  </div>
-  <button onclick="copyFunction()" onmouseout="outFunc()" class="btn btn-success"> <span class="tooltiptext" id="myTooltip">Copy</span> </button>
-  </div>
-  <br></div>`;
+<script>
+var host = window.location.href.split('?')[0];
+location.replace(host)
+</script>
+
+</div>`;
                 }
             } catch (err) {
                 var content = `
